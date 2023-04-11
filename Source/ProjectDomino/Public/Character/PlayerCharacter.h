@@ -27,6 +27,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void GetHit_Implementation(const FVector& ImpactPoint, AActor* Hitter) override;
+	void PlayHitCameraShake();
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	/** </AActor> */
@@ -53,6 +54,7 @@ protected:
 	void QuickTurn();
 	void PickupKeyPressed();
 	virtual void Attack() override;
+	void PlayAttackCameraShake();
 	void ChanceToPlayGruntSound();
 	virtual void StrongAttack() override;
 	void ClearComboResetTimer();
@@ -136,6 +138,12 @@ protected:
 	bool bIsRunning;
 
 	FName ComboSection;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	TSubclassOf<class UCameraShakeBase> AttackCameraShakeClass;
 
 private:
 

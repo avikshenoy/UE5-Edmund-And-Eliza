@@ -131,6 +131,15 @@ void APlayerCharacter::GetHit_Implementation(const FVector& ImpactPoint, AActor*
 	{
 		UnCrouch();
 	}
+	PlayHitCameraShake();
+}
+
+void APlayerCharacter::PlayHitCameraShake()
+{
+	if (HitCameraShakeClass)
+	{
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
+	}
 }
 
 float APlayerCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
@@ -328,8 +337,17 @@ void APlayerCharacter::Attack()
 		ActionState = EActionState::EAS_Attacking;
 		UseStamina(Attributes->GetLightAttackCost());
 		ChanceToPlayGruntSound();
+		PlayAttackCameraShake();
 
 		//UE_LOG(LogTemp, Warning, TEXT("Damage is %f"), EquippedWeapon->GetDamage());
+	}
+}
+
+void APlayerCharacter::PlayAttackCameraShake()
+{
+	if (AttackCameraShakeClass)
+	{
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(AttackCameraShakeClass);
 	}
 }
 
@@ -362,6 +380,7 @@ void APlayerCharacter::StrongAttack()
 		EquippedWeapon->SetWeaponDamage(StrongDamage);
 		ActionState = EActionState::EAS_Attacking;
 		UseStamina(Attributes->GetStrongAttackCost());
+		PlayAttackCameraShake();
 
 		//UE_LOG(LogTemp, Error, TEXT("Damage is %f"), EquippedWeapon->GetDamage());
 
