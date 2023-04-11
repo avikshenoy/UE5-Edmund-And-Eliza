@@ -53,6 +53,7 @@ protected:
 	void QuickTurn();
 	void PickupKeyPressed();
 	virtual void Attack() override;
+	void ChanceToPlayGruntSound();
 	virtual void StrongAttack() override;
 	void ClearComboResetTimer();
 	virtual void SpaceAction();

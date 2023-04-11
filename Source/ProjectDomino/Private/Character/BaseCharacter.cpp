@@ -7,6 +7,7 @@
 #include "Components/AttributeComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
 
 ABaseCharacter::ABaseCharacter() :
 	WarpTargetDistance(75.f),
@@ -32,15 +33,106 @@ void ABaseCharacter::GetHit_Implementation(const FVector& ImpactPoint, AActor* H
 	if (IsAlive() && Hitter)
 	{
 		DirectionalHitReact(Hitter->GetActorLocation());
+		SpawnHitParticles(ImpactPoint - (50,0,0));
+		PlayHitSound(ImpactPoint);
+		PlayPainSound(ImpactPoint);
 	}
 	else
 	{
+		SpawnHitParticles(ImpactPoint);
+		PlayHitSound(ImpactPoint);
+		PlayDeathSound(ImpactPoint);
 		Die();
+	}
+}
+
+void ABaseCharacter::PlayDeathSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			DeathSound,
+			ImpactPoint
+		);
+	}
+}
+
+void ABaseCharacter::PlayPainSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			PainSound,
+			ImpactPoint
+		);
+	}
+}
+
+void ABaseCharacter::PlayActionSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			ActionSound,
+			ImpactPoint
+		);
+	}
+}
+
+void ABaseCharacter::PlayBeginChaseSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			BeginChaseSound,
+			ImpactPoint
+		);
+	}
+}
+
+void ABaseCharacter::PlayGruntSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			GruntSound,
+			ImpactPoint
+		);
+	}
+}
+
+void ABaseCharacter::PlayHitSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			HitSound,
+			ImpactPoint
+		);
+	}
+}
+
+void ABaseCharacter::PlayPatrolSound(const FVector& ImpactPoint)
+{
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			PatrolPointSound,
+			ImpactPoint
+		);
 	}
 }
 
 void ABaseCharacter::Attack()
 {
+
 	if (CombatTarget && CombatTarget->ActorHasTag(FName("Dead")))
 	{
 		CombatTarget = nullptr;
@@ -49,6 +141,7 @@ void ABaseCharacter::Attack()
 
 void ABaseCharacter::StrongAttack()
 {
+
 	if (CombatTarget && CombatTarget->ActorHasTag(FName("Dead")))
 	{
 		CombatTarget = nullptr;
@@ -142,6 +235,18 @@ void ABaseCharacter::DirectionalHitReact(const FVector& ImpactPoint)
 	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);*/
 }
 
+void ABaseCharacter::SpawnHitParticles(const FVector& ImpactPoint)
+{
+	if (HitParticle)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(
+			GetWorld(),
+			HitParticle,
+			ImpactPoint
+		);
+	}
+}
+
 bool ABaseCharacter::IsAlive()
 {
 	return Attributes && Attributes->IsAlive();
@@ -216,11 +321,15 @@ void ABaseCharacter::PlayQuickTurnMontage(UAnimMontage* Montage)
 
 int32 ABaseCharacter::PlayChaseActionMontage()
 {
+	PlayActionSound(GetActorLocation());
+
 	return PlayRandomMontageSection(ChaseActionMontage, ChaseActionMontageSections);
 }
 
 int32 ABaseCharacter::PlayBeginChaseMontage()
 {
+	PlayBeginChaseSound(GetActorLocation());
+
 	return PlayRandomMontageSection(BeginChaseMontage, BeginChaseMontageSections);
 }
 

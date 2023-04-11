@@ -33,7 +33,7 @@
 		},
 		{
 			"Name": "TextureResizeSC",
-			"Enabled": false,
+			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/c24899ea760042709748b9853bbc946c"
 		},
 		{

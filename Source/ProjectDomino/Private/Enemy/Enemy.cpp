@@ -202,6 +202,7 @@ void AEnemy::Attack()
 	if (CombatTarget == nullptr) return;
 
 	EnemyState = EEnemyState::EES_Engaged;
+	PlayGruntSound(GetActorLocation());
 	PlayAttackMontage(AttackMontage);
 }
 
@@ -276,6 +277,7 @@ void AEnemy::CheckPatrolTarget()
 		const float WaitTime = FMath::RandRange(PatrolWaitMin, PatrolWaitMax);
 		GetWorldTimerManager().SetTimer(PatrolTimer, this, &AEnemy::PatrolTimerFinished, WaitTime);
 		
+		PlayPatrolSound(GetActorLocation());
 		PlayPatrolPointReachedMontage();
 	}
 }

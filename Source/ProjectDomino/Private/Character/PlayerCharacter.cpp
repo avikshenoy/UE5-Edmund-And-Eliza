@@ -327,8 +327,25 @@ void APlayerCharacter::Attack()
 		EquippedWeapon->SetWeaponDamage(LightDamage);
 		ActionState = EActionState::EAS_Attacking;
 		UseStamina(Attributes->GetLightAttackCost());
+		ChanceToPlayGruntSound();
 
-		UE_LOG(LogTemp, Warning, TEXT("Damage is %f"), EquippedWeapon->GetDamage());
+		//UE_LOG(LogTemp, Warning, TEXT("Damage is %f"), EquippedWeapon->GetDamage());
+	}
+}
+
+void APlayerCharacter::ChanceToPlayGruntSound()
+{
+	int GruntChance = FMath::RandRange(0, 1);
+
+	switch (GruntChance)
+	{
+	case 0:
+		PlayGruntSound(GetActorLocation());
+		break;
+	case 1:
+		break;
+	default:
+		break;
 	}
 }
 
@@ -340,12 +357,13 @@ void APlayerCharacter::StrongAttack()
 	{
 		ClearComboResetTimer();
 		StopMontage(AttackMontage);
+		PlayGruntSound(GetActorLocation());
 		PlayPlayerAttackMontage(StrongAttackMontage, ComboSection);
 		EquippedWeapon->SetWeaponDamage(StrongDamage);
 		ActionState = EActionState::EAS_Attacking;
 		UseStamina(Attributes->GetStrongAttackCost());
 
-		UE_LOG(LogTemp, Error, TEXT("Damage is %f"), EquippedWeapon->GetDamage());
+		//UE_LOG(LogTemp, Error, TEXT("Damage is %f"), EquippedWeapon->GetDamage());
 
 	}
 }

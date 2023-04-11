@@ -37,4 +37,5 @@ void AKnight::SpaceAction()
 	PlayDodgeMontage(Section);
 	ActionState = EActionState::EAS_Dodge;
 	UseStamina(Attributes->GetDodgeCost());
+	ChanceToPlayGruntSound();
 }

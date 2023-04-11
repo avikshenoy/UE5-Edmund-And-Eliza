@@ -33,10 +33,18 @@ protected:
 	
 	/** Combat */
 	virtual void GetHit_Implementation(const FVector& ImpactPoint, AActor* Hitter) override;
+	void PlayDeathSound(const FVector& ImpactPoint);
+	void PlayPainSound(const FVector& ImpactPoint);
+	void PlayActionSound(const FVector& ImpactPoint);
+	void PlayBeginChaseSound(const FVector& ImpactPoint);
+	void PlayGruntSound(const FVector& ImpactPoint);
+	void PlayHitSound(const FVector& ImpactPoint);
+	void PlayPatrolSound(const FVector& ImpactPoint);
 	virtual void Attack();
 	virtual void StrongAttack();
 	virtual void Die();
 	void DirectionalHitReact(const FVector& ImpactPoint);
+	void SpawnHitParticles(const FVector& ImpactPoint);
 	virtual void HandleDamage(float DamageAmount);
 	virtual bool CanAttack(const FName& TypeOfAttack);
 	void DisableCapsule();
@@ -130,6 +138,30 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* IntimidationMontage;
+
+	UPROPERTY(EditAnywhere, Category = VFX)
+	UParticleSystem* HitParticle;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* HitSound;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* PainSound;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* DeathSound;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* GruntSound;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* BeginChaseSound;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* ActionSound;
+
+	UPROPERTY(EditAnywhere, Category = SFX)
+	USoundBase* PatrolPointSound;
 
 private:
 
