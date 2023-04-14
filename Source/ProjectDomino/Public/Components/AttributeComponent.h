@@ -24,35 +24,35 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-private:
-
 	/* Current Health */
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float Health;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float Health;
 
 	/* Max Health */
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float MaxHealth;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float MaxHealth;
 
 	/* Current Stamina */
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float Stamina;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float Stamina;
 
 	/* Max Stamina */
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float MaxStamina;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float MaxStamina;
 
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float DodgeCost;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float DodgeCost;
 
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float LightAttackCost;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float LightAttackCost;
 
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float StrongAttackCost;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float StrongAttackCost;
 
-	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
-	float StaminaRegenRate;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Actor Attributes")
+		float StaminaRegenRate;
+
+private:
 
 public:	
 

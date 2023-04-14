@@ -41,6 +41,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 		FText ItemDescription;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+		bool IsKeyItem;
+
 
 	UPROPERTY()
 		class UInventoryComponent* CurrentInventory;

@@ -97,7 +97,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float StrongDamage;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UAttributeComponent* Attributes;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Combat")

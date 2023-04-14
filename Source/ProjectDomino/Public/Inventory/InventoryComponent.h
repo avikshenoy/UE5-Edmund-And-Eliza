@@ -37,7 +37,7 @@ public:
 		TArray<class UFItem*> Items;
 
 	//Item capacity (how many items can you store)
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 		int capacity = 8;
 
 
