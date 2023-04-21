@@ -100,7 +100,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UAttributeComponent* Attributes;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Combat")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
 	AActor* CombatTarget;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")

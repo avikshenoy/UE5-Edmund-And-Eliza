@@ -194,6 +194,8 @@ void AEnemy::Die()
 	SetLifeSpan(DeathLifeSpan);
 	SetMovementAttributes(false, false, false, 0.f);
 	SetWeaponCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	CombatTarget = nullptr;
 }
 
 void AEnemy::Attack()

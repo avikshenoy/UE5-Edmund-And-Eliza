@@ -147,10 +147,10 @@ private:
 	UPROPERTY()
 	APlayerCharacter* PlayerCharacter;
 
-	UPROPERTY(EditInstanceOnly, Category = "AI Navigation")
+	UPROPERTY(EditAnywhere, Category = "AI Navigation")
 	AActor* PatrolTarget;
 
-	UPROPERTY(EditInstanceOnly, Category = "AI Navigation")
+	UPROPERTY(EditAnywhere, Category = "AI Navigation")
 	TArray<AActor*> PatrolTargets;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
