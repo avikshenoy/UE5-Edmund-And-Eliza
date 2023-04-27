@@ -119,6 +119,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void HitReactEnd();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReturnToMainMenuAfterDeath();
+
 	/* Take Key pressed, call when take key is pressed, Same functionality with PickupKeyPressed so merge later down the line*/
 	void TakeKeyPressed();
 

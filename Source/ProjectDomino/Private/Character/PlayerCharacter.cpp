@@ -628,6 +628,8 @@ void APlayerCharacter::Die()
 	Super::Die();
 	ActionState = EActionState::EAS_Dead;
 	DisableMeshCollision();
+
+	ReturnToMainMenuAfterDeath();
 }
 
 bool APlayerCharacter::HasEnoughStamina(float StaminaCost)
