@@ -57,7 +57,9 @@ protected:
 private:
 
 	/** AI Behavior*/
+	UFUNCTION(BlueprintCallable)
 	void InitializeEnemy();
+	UFUNCTION(BlueprintCallable)
 	void InitializePlayerPointer();
 	void CheckPatrolTarget();
 	void CheckCombatTarget();

@@ -150,15 +150,8 @@ void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (PawnSensing)
-	{
-		PawnSensing->OnSeePawn.AddDynamic(this, &AEnemy::PawnSeen);
-	}
-
 	InitializeEnemy();
 	InitializePlayerPointer();
-
-	Tags.Add(FName("Enemy"));
 
 	// Old behavior tree stuff
 
@@ -261,6 +254,13 @@ void AEnemy::InitializeEnemy()
 	MoveToTarget(PatrolTarget);
 	HideHealthBar();
 	SpawnDefaultWeapon();
+
+	if (PawnSensing)
+	{
+		PawnSensing->OnSeePawn.AddDynamic(this, &AEnemy::PawnSeen);
+	}
+
+	Tags.Add(FName("Enemy"));
 }
 
 void AEnemy::InitializePlayerPointer()
