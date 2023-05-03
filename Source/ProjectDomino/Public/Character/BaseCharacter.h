@@ -91,10 +91,10 @@ protected:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AWeapon> WeaponClass;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 	float LightDamage;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 	float StrongDamage;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
