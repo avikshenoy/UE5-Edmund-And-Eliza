@@ -703,14 +703,7 @@ void APlayerCharacter::AttachWeaponToHand()
 
 void APlayerCharacter::SpawnDefaultWeapon()
 {
-	UWorld* World = GetWorld();
 
-	if (World && WeaponClass)
-	{
-		AWeapon* DefaultWeapon = World->SpawnActor<AWeapon>(WeaponClass);
-		DefaultWeapon->Equip(GetMesh(), FName("SpineSocket"), this, this);
-		EquippedWeapon = DefaultWeapon;
-	}
 }
 
 void APlayerCharacter::FinishEquipping()

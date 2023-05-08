@@ -21,6 +21,7 @@ public:
 protected:
 
 	virtual void SpaceAction() override;
+	virtual void SpawnDefaultWeapon() override;
 
 private:
 

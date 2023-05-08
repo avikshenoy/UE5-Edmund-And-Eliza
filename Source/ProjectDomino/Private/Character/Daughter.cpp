@@ -48,3 +48,8 @@ void ADaughter::CanMoveAgain()
 {
 	ActionState = EActionState::EAS_Unoccupied;
 }
+
+void ADaughter::SpawnDefaultWeapon()
+{
+
+}

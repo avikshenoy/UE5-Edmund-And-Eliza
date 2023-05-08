@@ -3,6 +3,7 @@
 
 #include "Character/Knight.h"
 #include "Components/AttributeComponent.h"
+#include "Items/Weapons/Weapon.h"
 
 
 AKnight::AKnight() 
@@ -38,4 +39,16 @@ void AKnight::SpaceAction()
 	ActionState = EActionState::EAS_Dodge;
 	UseStamina(Attributes->GetDodgeCost());
 	ChanceToPlayGruntSound();
+}
+
+void AKnight::SpawnDefaultWeapon()
+{
+	UWorld* World = GetWorld();
+
+	if (World && WeaponClass)
+	{
+		AWeapon* DefaultWeapon = World->SpawnActor<AWeapon>(WeaponClass);
+		DefaultWeapon->Equip(GetMesh(), FName("SpineSocket"), this, this);
+		EquippedWeapon = DefaultWeapon;
+	}
 }

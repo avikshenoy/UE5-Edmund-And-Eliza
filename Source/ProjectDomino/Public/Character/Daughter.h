@@ -22,6 +22,7 @@ protected:
 
 	virtual void SpaceAction() override;
 	virtual void Combo() override;
+	virtual void SpawnDefaultWeapon() override;
 
 	void StartCrouchTimer();
 	void CanMoveAgain();

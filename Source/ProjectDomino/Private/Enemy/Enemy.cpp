@@ -87,7 +87,7 @@ void AEnemy::Tick(float DeltaTime)
 	}
 
 	/** Debug Tools */
-	UE_LOG(LogTemp, Log, TEXT("Enemy Enum is %s"), *UEnum::GetValueAsString(EnemyState));
+	//UE_LOG(LogTemp, Log, TEXT("Enemy Enum is %s"), *UEnum::GetValueAsString(EnemyState));
 
 	//UE_LOG(LogTemp, Warning, TEXT("bIsStrafing is %s"), bIsStrafing ? TEXT("true") : TEXT("false"));
 }

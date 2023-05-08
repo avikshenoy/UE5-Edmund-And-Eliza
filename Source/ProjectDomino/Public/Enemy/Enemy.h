@@ -50,7 +50,6 @@ protected:
 	virtual void PlayDodgeMontage(const FName& SectionName) override;
 	/** </ABaseCharacter> */
 
-
 	UPROPERTY(BlueprintReadOnly)
 	EEnemyState EnemyState = EEnemyState::EES_Patrolling;
 
