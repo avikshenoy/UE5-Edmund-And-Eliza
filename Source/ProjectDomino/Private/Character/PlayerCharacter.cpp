@@ -88,7 +88,6 @@ void APlayerCharacter::Tick(float DeltaTime)
 	StopTurningRightOrLeft();
 	SearchMode(DeltaTime);
 	Rotate180(DeltaTime);
-	//AdjustCameraBoomOffset(DeltaTime);
 
 	if (bIsRunning)
 	{
@@ -96,10 +95,6 @@ void APlayerCharacter::Tick(float DeltaTime)
 		{
 			StopRunning();
 		}
-	/*	if (CharacterState == ECharacterState::ECS_EquippedOnHandedWeapon)
-		{
-			StopRunning();
-		}*/
 		if (GetCharacterMovement()->IsCrouching())
 		{
 			StopRunning();
